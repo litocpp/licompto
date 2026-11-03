@@ -1,0 +1,25 @@
+[package]
+name = "licompto"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+authors = ["hypengw <hypengwip@gmail.com>"]
+
+[lib]
+name = "licompto"
+module = "licompto"
+archive = "licompto"
+
+[[test]]
+name = "licompto-tests"
+sources = ["tests/main.cpp", "tests/codec.cpp", "tests/io.cpp"]
+
+[profile.base]
+exceptions = false
+rtti = false
+
+[dependencies]
+rstd-std = { version = "0.1.10", pub = true }
+licrypto = { version = "0.2.1" }
+
+[dev-dependencies]
+rstd-test = { version = "0.1.10" }
