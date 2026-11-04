@@ -37,7 +37,7 @@ public:
                         cause.kind() == rstd::io::ErrorKind { rstd::io::ErrorKind::Interrupted })
                         continue;
                     failed_ = true;
-                    return Err(Error::Io(cause));
+                    return Err(Error::Io(rstd::move(cause)));
                 }
                 eof_ = length_ == usize();
             }

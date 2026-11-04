@@ -27,11 +27,10 @@ private:
 public:
     constexpr auto input_offset() const noexcept -> u64 { return input_offset_; }
     constexpr auto output_offset() const noexcept -> u64 { return output_offset_; }
-    constexpr auto at(u64 input, u64 output) const noexcept -> Error {
-        auto error           = *this;
-        error.input_offset_  = input;
-        error.output_offset_ = output;
-        return error;
+    constexpr auto at(u64 input, u64 output) && noexcept -> Error {
+        input_offset_  = input;
+        output_offset_ = output;
+        return rstd::move(*this);
     }
 };
 

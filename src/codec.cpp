@@ -47,7 +47,7 @@ struct Call {
 
     void fail(Error value) {
         failed = true;
-        error  = value;
+        error  = rstd::move(value);
     }
     auto byte(unsigned& value) -> bool {
         if (consumed == input_size) return false;
@@ -999,7 +999,7 @@ auto encode(EncoderState* s, slice<u8> input, mut_ref<u8[]> output, EncodeAction
         s->remaining = c.input_size - c.consumed;
         if (c.failed) {
             s->failed = true;
-            return Err(c.error.at(u64(c.total_in), u64(c.total_out)));
+            return Err(rstd::move(c.error).at(u64(c.total_in), u64(c.total_out)));
         }
         return Ok(Progress { usize(c.consumed), usize(c.written), status });
     };
@@ -1098,7 +1098,7 @@ auto decode(DecoderState* s, slice<u8> input, mut_ref<u8[]> output, InputEnd end
     }
     if (c.failed || status == Run::Error) {
         s->failed = true;
-        return Err(c.error.at(u64(c.total_in), u64(c.total_out)));
+        return Err(rstd::move(c.error).at(u64(c.total_in), u64(c.total_out)));
     }
     return Ok(Progress { usize(c.consumed),
                          usize(c.written),
