@@ -18,8 +18,8 @@ exceptions = false
 rtti = false
 
 [dependencies]
-rstd-std = { version = "0.1.10", pub = true }
+rstd-std = { version = "0.1.11", pub = true }
 licrypto = { version = "0.2.1" }
 
 [dev-dependencies]
-rstd-test = { version = "0.1.10" }
+rstd-test = { version = "0.1.11" }

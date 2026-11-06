@@ -1,0 +1,8 @@
+<release version="0.1.0" date="2026-11-06">
+  <description>
+    <ul>
+      <li>Add streaming DEFLATE, zlib and gzip encoding and decoding.</li>
+      <li>Add reader and writer adapters for compressed streams.</li>
+    </ul>
+  </description>
+</release>
